@@ -1,131 +1,166 @@
-/* Reset */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-  }
+:root {
+  --primary-color: #d9482b;
+  --primary-dark: #A55C18;
+  --background-light: #FFF8F1;
+  --text-dark: #2E2E2E;
+  --text-light: #FFFFFF;
+}
 
-  body, html {
-    height: 100%;
-    background: #fff8f0;
-    color: #333;
-  }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--background-light);
+  color: var(--text-dark);
+  transition: background-color 0.3s, color 0.3s;
+}
 
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  padding: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+  text-decoration: underline;
+}
+
+.social-links a {
+  color: white;
+  margin-right: 10px;
+  font-size: 1.2em;
+}
+
+.logo {
+  font-size: 1.8em;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.sidebar-text {
+  font-size: 0.9em;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.dark-mode-toggle {
+  background: none;
+  border: 1px solid var(--text-light);
+  padding: 10px;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dark-mode-toggle:hover {
+  background-color: var(--primary-dark);
+}
+
+.content {
+  flex: 1;
+  padding: 40px;
+}
+
+.jobfair-header {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.jobfair-details {
+  font-size: 1.1em;
+  margin-bottom: 30px;
+}
+
+.newsletter label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.newsletter input {
+  padding: 10px;
+  width: 300px;
+  max-width: 100%;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.newsletter button {
+  padding: 10px 15px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.newsletter button:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Dark Mode */
+.dark-mode {
+  background-color: #1e1e1e;
+  color: #ddd;
+}
+
+.dark-mode .sidebar {
+  background-color: #333;
+  color: #fff;
+}
+
+.dark-mode .dark-mode-toggle {
+  border-color: #ccc;
+  color: #ccc;
+}
+
+.dark-mode .newsletter button {
+  background-color: #FF6B00;
+}
+
+.dark-mode .newsletter button:hover {
+  background-color: #E65C00;
+}
+
+@media (max-width: 768px) {
   .container {
-    display: flex;
-    height: 100vh;
-  }
-
-  /* Left sidebar */
-  .sidebar {
-    width: 280px;
-    background-color: #ff6f00; /* bright orange */
-    color: white;
-    display: flex;
     flex-direction: column;
-    padding: 2rem 1.5rem;
   }
 
-  .logo {
-    font-weight: 700;
-    font-size: 1.8rem;
-    margin-bottom: 3rem;
-    letter-spacing: 2px;
-  }
-
-  nav {
-    flex-grow: 1;
-  }
-
-  nav ul {
-    list-style: none;
-  }
-
-  nav li {
-    margin-bottom: 1.5rem;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 1.1rem;
-    transition: opacity 0.2s ease;
-  }
-
-  nav li:hover {
-    opacity: 0.8;
-  }
-
-  /* Right content */
-  .content {
-    flex-grow: 1;
-    padding: 2rem 3rem;
-    overflow-y: auto;
-  }
-
-  .jobfair-header {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    border-bottom: 3px solid #ff6f00;
-    display: inline-block;
-    padding-bottom: 0.3rem;
-    color: #ff6f00;
-  }
-
-  .jobfair-details {
-    margin-top: 1.5rem;
-    line-height: 1.6;
-    font-size: 1.1rem;
-    max-width: 700px;
-  }
-
-  /* Newsletter Signup */
-  .newsletter {
-    margin-top: 3rem;
-    max-width: 350px;
-  }
-
-  .newsletter label {
-    font-weight: 600;
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-
-  .newsletter input[type="email"] {
+  .sidebar {
     width: 100%;
-    padding: 0.5rem 0.7rem;
-    border: 2px solid #ff6f00;
-    border-radius: 4px;
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    outline: none;
-    transition: border-color 0.3s ease;
+    text-align: center;
   }
 
-  .newsletter input[type="email"]:focus {
-    border-color: #cc5500;
+  .content {
+    padding: 20px;
+  }
+
+  .newsletter input {
+    width: 100%;
+    margin-bottom: 10px;
   }
 
   .newsletter button {
-    background-color: #ff6f00;
-    color: white;
-    border: none;
-    padding: 0.6rem 1.2rem;
-    font-weight: 700;
-    font-size: 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    width: 100%;
   }
+}
 
-  .newsletter button:hover {
-    background-color: #cc5500;
-  }
 
-  /* Scrollbar for content */
-  .content::-webkit-scrollbar {
-    width: 8px;
-  }
-  .content::-webkit-scrollbar-thumb {
-    background-color: #ff6f00;
-    border-radius: 4px;
-  }

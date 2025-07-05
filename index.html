@@ -2,36 +2,85 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>College Job Affair</title>
+
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
     <aside class="sidebar">
       <div class="logo">Job Affair</div>
-      <nav>
-        <ul>
-          <li> # </li>
-          <li> # </li>
-          <li> # </li>
-          <li> # </li>
-        </ul>
-      </nav>
+      <div class="sidebar-text">
+        <p>Welcome to Job Affair — your trusted college platform connecting students with top job fairs and career opportunities every week.</p>
+      </div>
+      <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+        <i class="fa-solid fa-moon"></i> Toggle Dark Mode
+      </button>
+
+      <div class="sidebar-info">
+        <h4>About This Board</h4>
+        <p>This noticeboard is updated weekly with job fairs, career events, and internship openings happening in and around campus.</p>
+      </div>
+
+      <div class="sidebar-info">
+        <h4>How It Works</h4>
+        <p>Check here every Monday for the latest job fair schedules, prep resources, and featured employers. No logins needed — just explore!</p>
+      </div>
+
+      <div class="poster-preview">
+        <h4>🎉 Poster of the Week</h4>
+        <img src="./assets/viber_image_2025-06-28_11-45-08-967.webp" alt="Upcoming Fair Poster" style="width:100%;" />
+      </div>
+
+      <div class="sidebar-tip">
+        <h4>Resume Tip of the Week</h4>
+        <p>Tailor your resume for each role — highlight relevant projects and use keywords from the job description.</p>
+      </div>
+      
+      
+      
+
+      <div class="contact-info">
+        <h4>Need Help?</h4>
+        <p>Email: <a href="mailto:jobaffair@yourcollege.edu">jobaffair@yourcollege.edu</a></p>
+        <p>Office: Career Center, Room 203</p>
+      </div>
+
+      <div class="social-links">
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+      
     </aside>
 
     <main class="content">
-      <h1 class="jobfair-header"> Weekly Job Fair - ____ </h1>
+      <h1 class="jobfair-header">Weekly Job Fair - <span id="jobfair-week">Week of July 8, 2025</span></h1>
       <div class="jobfair-details">
-        // All sorts of Job Fairs Details
+        All sorts of Job Fairs Details
       </div>
-
       <section class="newsletter">
         <label for="email">Subscribe to our newsletter</label>
-        <input type="email" id="email" name="email" placeholder="Your email address" />
+        <input type="email" id="email" placeholder="Your email address" />
         <button type="button">Subscribe</button>
       </section>
     </main>
   </div>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+  
+    // Example dynamic week label (can be made smarter)
+    const today = new Date();
+    const options = { month: 'long', day: 'numeric', year: 'numeric' };
+    document.getElementById("jobfair-week").textContent = `Week of ${today.toLocaleDateString(undefined, options)}`;
+  </script>
 </body>
 </html>
