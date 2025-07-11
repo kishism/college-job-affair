@@ -17,6 +17,7 @@ body {
 .container {
   display: flex;
   min-height: 100vh;
+  align-items: flex-start;
 }
 
 .sidebar {
@@ -24,6 +25,9 @@ body {
   background-color: var(--primary-color);
   color: var(--text-light);
   padding: 20px;
+  position: sticky;
+  overflow-y: auto;
+  top: 0;
 }
 
 .sidebar ul {
@@ -57,6 +61,40 @@ body {
   line-height: 1.5;
   margin-bottom: 20px;
 }
+
+.sidebar-action {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.sidebar-action p {
+  font-size: 17x;
+  color: #ffffff;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.employer-button {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.employer-button:hover {
+  background-color: black;
+  color: white;
+}
+
 
 .dark-mode-toggle {
   background: none;

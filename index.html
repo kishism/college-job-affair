@@ -42,8 +42,14 @@
         <h4>Resume Tip of the Week</h4>
         <p>Tailor your resume for each role — highlight relevant projects and use keywords from the job description.</p>
       </div>
-      
-      
+
+      <div class="sidebar-action">
+        <p>
+          Are you a company looking to connect with talented students? Register your company to join our next job fair.
+        </p>
+        <a href="./employer-registration.html" class="employer-button">
+           Why you should join us!
+        </a>
       
 
       <div class="contact-info">
@@ -64,11 +70,30 @@
       <div class="jobfair-details">
         All sorts of Job Fairs Details
       </div>
+
+      <!-- 
+  NOTE: When deploying, set this page as the Mailchimp redirect URL:
+  https://yourdomain.com/thank-you.html
+
+  Update it under:
+  Mailchimp → Audience → Signup Forms → Form Builder → Signup Thank You Page → Advanced → Redirect
+      -->
       <section class="newsletter">
-        <label for="email">Subscribe to our newsletter</label>
-        <input type="email" id="email" placeholder="Your email address" />
-        <button type="button">Subscribe</button>
-      </section>
+        <form action="https://app.us7.list-manage.com/subscribe/post?u=8ada6c5dd178fb108ace3c337&amp;id=e79ff5dbc0&amp;f_id=000486e0f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+          <label for="newsletter-email">Subscribe to our newsletter</label>
+          <div class="input-group">
+            <input
+              type="email"
+              id="newsletter-email"
+              name="EMAIL"
+              placeholder="Your email address"
+              required
+            />
+            <button type="submit">Subscribe</button>
+          </div>
+        </form>
+      </section>      
+      
     </main>
   </div>
 

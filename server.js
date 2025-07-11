@@ -15,6 +15,11 @@ const morgan = require('morgan');           // Logs HTTP requests in the console
 const app = express();                      // Creates an Express application instance
 const PORT = process.env.PORT || 5000;      // Sets the port for the app (uses environment variable or defaults to 5000)
 
+// Import and use cookie-parser middleware
+// This allows Express to parse cookies attached to client requests
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
 // Check for essential environment variables before starting the server
 if (!process.env.MONGO_URI) {
     console.error("Missing MONGO_URI");     // Warns the developer about missing MongoDB URI
