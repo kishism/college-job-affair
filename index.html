@@ -11,8 +11,14 @@
 
 
   <link rel="stylesheet" href="style.css" />
+  
 </head>
 <body>
+  <!-- Sidebar Toggle Button (for mobile) -->
+  <button class="sidebar-toggle" onclick="toggleSidebar()">
+    <i class="fas fa-bars"></i>
+  </button>
+   <!-- Main container with sidebar + content -->
   <div class="container">
     <aside class="sidebar">
       <div class="logo">Job Affair</div>
@@ -264,15 +270,42 @@
     </div>
   </div>
 
-  <script>
-    function toggleDarkMode() {
-      document.body.classList.toggle("dark-mode");
+<script>
+  function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+  }
+
+  function toggleSidebar() {
+    const sidebar = document.querySelector(".sidebar");
+    const isOpen = sidebar.classList.toggle("sidebar-open");
+
+    // Lock scroll only if sidebar is now open
+    document.body.classList.toggle("no-scroll", isOpen);
+  }
+
+  // Close sidebar if clicking outside of it
+  document.addEventListener("click", function (e) {
+    const sidebar = document.querySelector(".sidebar");
+    const toggle = document.querySelector(".sidebar-toggle");
+
+    const isOpen = sidebar.classList.contains("sidebar-open");
+
+    if (
+      isOpen &&
+      !sidebar.contains(e.target) &&
+      !toggle.contains(e.target)
+    ) {
+      sidebar.classList.remove("sidebar-open");
+      document.body.classList.remove("no-scroll");
     }
-  
-    // Example dynamic week label (can be made smarter)
-    const today = new Date();
-    const options = { month: 'long', day: 'numeric', year: 'numeric' };
-    document.getElementById("jobfair-week").textContent = `Week of ${today.toLocaleDateString(undefined, options)}`;
-  </script>
+  });
+
+  // Dynamic week label
+  const today = new Date();
+  const options = { month: 'long', day: 'numeric', year: 'numeric' };
+  document.getElementById("jobfair-week").textContent = `Week of ${today.toLocaleDateString(undefined, options)}`;
+</script>
+
+
 </body>
 </html>

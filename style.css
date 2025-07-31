@@ -6,13 +6,71 @@
   --text-light: #FFFFFF;
 }
 
+
+/* Sidebar default light mode */
+body:not(.dark-mode) .sidebar {
+  background-color: var(--background-light); /* light background */
+  color: var(--text-dark); /* dark text */
+}
+
+/* Sidebar links inherit color */
+.sidebar ul li a,
+.sidebar p,
+.sidebar .sidebar-action p,
+.sidebar .contact-info p,
+.sidebar .social-links a {
+  color: inherit;
+}
+
+/* Sidebar in dark mode */
+body.dark-mode .sidebar {
+  background-color: var(--primary-color); /* dark bg */
+  color: var(--text-light); /* light text */
+}
+
+/* Links and text in dark mode sidebar */
+body.dark-mode .sidebar ul li a,
+body.dark-mode .sidebar p,
+body.dark-mode .sidebar .sidebar-action p,
+body.dark-mode .sidebar .contact-info p,
+body.dark-mode .sidebar .social-links a {
+  color: inherit;
+}
+
+
+/* Dark mode overrides */
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: var(--text-light);
+}
+
+body.dark-mode .sidebar {
+  background-color: #2e2e2e;
+  color: var(--text-light); /* white text on dark background */
+}
+
+/* Light mode overrides for sidebar */
+body:not(.dark-mode) .sidebar {
+  background-color: var(--background-light); /* lighter sidebar bg */
+  color: var(--text-dark); /* dark text for readability */
+}
+
+/* Update sidebar links similarly */
+.sidebar ul li a {
+  color: inherit; /* inherit color from sidebar */
+}
+
+body:not(.dark-mode) .sidebar ul li a {
+  color: var(--text-dark);
+}
+
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   background-color: var(--background-light);
   color: var(--text-dark);
   transition: background-color 0.3s, color 0.3s;
-  overflow: hidden;
 }
 
 .container {
@@ -21,6 +79,43 @@ body {
   align-items: flex-start;
 }
 
+.partner-wrapper, .partner-card, .featured-card, .event-card {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.partner-wrapper img,
+.partner-card img,
+.featured-card img,
+.event-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Stack on small screens */
+@media (max-width: 768px) {
+  .partner-wrapper, .featured-card, .event-card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .partner-wrapper .text-content,
+  .partner-info,
+  .featured-text {
+    text-align: center;
+  }
+
+  .newsletter .input-group {
+    flex-direction: column;
+  }
+
+  .newsletter input[type="email"] {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
 .sidebar {
   width: 250px;
   background-color: var(--primary-color);
@@ -31,7 +126,9 @@ body {
   height: 100vh; /* full viewport height */
   top: 0;
   scrollbar-width: none;
+  transition: transform 0.3s ease-in-out;
 }
+
 
 .sidebar ul {
   list-style: none;
@@ -101,16 +198,34 @@ body {
 
 .dark-mode-toggle {
   background: none;
-  border: 1px solid var(--text-light);
+  border: 1px solid var(--text-dark);
   padding: 10px;
-  color: var(--text-light);
+  color: var(--text-dark);
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  border-radius: 4px;
+  font-size: 1em;
 }
 
 .dark-mode-toggle:hover {
-  background-color: var(--primary-dark);
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border-color: var(--primary-color);
 }
+
+/* Dark mode overrides */
+body.dark-mode .dark-mode-toggle {
+  background: none;
+  border: 1px solid var(--text-light);
+  color: var(--text-light);
+}
+
+body.dark-mode .dark-mode-toggle:hover {
+  background-color: var(--primary-dark);
+  color: var(--text-light);
+  border-color: var(--primary-dark);
+}
+
 
 .main-content {
   flex: 1;
@@ -579,6 +694,125 @@ body {
   .newsletter button {
     width: 100%;
   }
+}
+.sidebar-toggle {
+  display: none; /* Hidden by default (for desktop) */
+}
+
+/* For mobile view */
+@media (max-width: 768px) {
+  .sidebar-toggle {
+    display: block;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1100;
+    background: #333;
+    color: white;
+    border: none;
+    padding: 10px 12px;
+    font-size: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100%;
+    background-color: #fff;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+
+  .sidebar.sidebar-open {
+    transform: translateX(0);
+  }
+
+  .no-scroll {
+    overflow: hidden;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+}
+
+/* Desktop: sidebar closed by default, toggled open */
+@media (min-width: 769px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 260px;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 20px;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+  }
+
+  .sidebar.sidebar-open {
+    transform: translateX(0);
+  }
+
+  /* Sidebar toggle button styling (always visible when sidebar is hidden) */
+.sidebar-toggle {
+  display: block;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background: #333;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  z-index: 1100;
+  cursor: pointer;
+}
+
+/* Sidebar hidden by default on all screens */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 260px;
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  padding: 20px;
+  overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar when opened */
+.sidebar.sidebar-open {
+  transform: translateX(0);
+}
+
+/* Adjust content when sidebar is open */
+.main-content {
+  margin-left: 0;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.sidebar.sidebar-open ~ .main-content {
+  margin-left: 260px;
+}
+
+/* Prevent body scroll when sidebar is open */
+body.no-scroll {
+  overflow: hidden;
+}
 }
 
 
